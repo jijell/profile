@@ -1,0 +1,429 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Portfolio - Abdul Aziz Adha</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;600;700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --navy: #233D4D;
+    --navy-light: #32536A;
+    --navy-lighter: #416B87;
+    --black: #000000;
+    --ink: #0B1418;
+    --text: #F2F5F6;
+    --muted: #A9BAC4;
+    --line: rgba(242,245,246,0.14);
+  }
+  * { box-sizing: border-box; }
+  html, body {
+    margin: 0;
+    height: 100%;
+    background: var(--black);
+    color: var(--text);
+    font-family: 'Inter', sans-serif;
+    scroll-behavior: smooth;
+    scroll-padding-top: 24px;
+  }
+  .stage {
+    min-height: 100%;
+    background:
+      radial-gradient(1100px 600px at 78% 30%, var(--navy-light) 0%, transparent 60%),
+      linear-gradient(180deg, var(--ink) 0%, var(--black) 100%);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 32px 16px;
+  }
+  .card {
+    width: 100%;
+    max-width: 1240px;
+    background: linear-gradient(160deg, rgba(35,61,77,0.55), rgba(0,0,0,0.55));
+    border: 1px solid var(--line);
+    border-radius: 28px;
+    padding: 40px 56px 56px;
+    position: relative;
+    overflow: hidden;
+  }
+  nav {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 24px;
+    flex-wrap: wrap;
+    margin-bottom: 64px;
+  }
+  .logo {
+    font-family: 'Space Grotesk', sans-serif;
+    font-weight: 700;
+    font-size: 22px;
+    letter-spacing: 0.2px;
+  }
+  .logo span { color: var(--navy-lighter); }
+  .navlinks {
+    display: flex;
+    gap: 32px;
+    list-style: none;
+    margin: 0; padding: 0;
+    font-size: 15px;
+    color: var(--muted);
+  }
+  .navlinks a {
+    color: inherit;
+    text-decoration: none;
+  }
+  .navlinks a.active,
+  .navlinks a:hover { color: var(--text); }
+
+  .hero {
+    display: grid;
+    grid-template-columns: 1.05fr 0.95fr;
+    align-items: center;
+    gap: 40px;
+  }
+  .copy h1 {
+    font-family: 'Space Grotesk', sans-serif;
+    font-size: 56px;
+    line-height: 1.05;
+    margin: 0 0 6px;
+    font-weight: 700;
+  }
+  .copy h2 {
+    font-family: 'Space Grotesk', sans-serif;
+    font-size: 26px;
+    font-weight: 500;
+    color: var(--navy-lighter);
+    margin: 0 0 20px;
+  }
+  .copy p {
+    max-width: 520px;
+    color: var(--muted);
+    font-size: 15.5px;
+    line-height: 1.7;
+    margin: 0 0 32px;
+  }
+  .actions {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    flex-wrap: wrap;
+  }
+  .cv-btn {
+    background: var(--text);
+    color: var(--black);
+    border: none;
+    border-radius: 999px;
+    padding: 15px 30px;
+    font-weight: 600;
+    font-size: 15px;
+    font-family: inherit;
+    cursor: pointer;
+    text-decoration: none;
+    display: inline-block;
+  }
+  .cv-btn:hover {
+    background: var(--muted);
+  }
+
+  .photo-wrap {
+    display: flex;
+    justify-content: center;
+  }
+  .photo-frame {
+    width: 420px;
+    height: 420px;
+    border-radius: 50%;
+    border: 1px solid var(--line);
+    background: rgba(255,255,255,0.02);
+    box-shadow: 0 0 90px rgba(65,107,135,0.35);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+    overflow: hidden;
+  }
+  .photo-frame img {
+    width: 100%; 
+    height: 100%;
+    object-fit: cover;
+    object-position: center 10%;
+  }
+
+  section.panel {
+    padding: 60px 16px; /* Mengurangi padding vertikal agar jarak tidak terlalu jauh */
+  }
+  .panel-inner {
+    max-width: 900px;
+    margin: 0 auto;
+  }
+  .eyebrow {
+    color: var(--navy-lighter);
+    font-size: 13px;
+    margin-bottom: 6px;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    font-weight: 600;
+  }
+  .panel h3 {
+    font-family: 'Space Grotesk', sans-serif;
+    font-size: 34px;
+    font-weight: 700;
+    margin: 0 0 10px;
+  }
+  .panel > .panel-inner > p.lead {
+    color: var(--muted);
+    max-width: 700px;
+    line-height: 1.6;
+    margin: 0 0 28px; /* Memperkecil jarak bawah dari lead teks */
+  }
+
+  /* About */
+  #about {
+    background: var(--ink);
+    border-top: 1px solid var(--line);
+    border-bottom: 1px solid var(--line);
+  }
+  .about-text p {
+    color: var(--muted);
+    line-height: 1.7;
+    margin: 0 0 12px; /* Merapatkan jarak antar paragraf */
+  }
+
+  /* Skills & Projects Section Styling */
+  .content-block {
+    margin-top: 24px; /* Merapatkan jarak sebelum blok keterampilan/proyek */
+  }
+  .content-block h4 {
+    font-family: 'Space Grotesk', sans-serif;
+    font-size: 19px;
+    color: var(--text);
+    margin-bottom: 10px;
+  }
+  .skills-list {
+    list-style: none;
+    padding: 0;
+    margin: 0 0 24px 0;
+  }
+  .skills-list li {
+    color: var(--muted);
+    margin-bottom: 8px;
+    line-height: 1.5;
+  }
+  .skills-list strong {
+    color: var(--text);
+  }
+  .project-card {
+    background: rgba(255, 255, 255, 0.02);
+    border: 1px solid var(--line);
+    border-left: 4px solid var(--navy-lighter);
+    border-radius: 12px;
+    padding: 16px 20px;
+    margin-bottom: 12px;
+  }
+  .project-card h5 {
+    font-family: 'Space Grotesk', sans-serif;
+    font-size: 16px;
+    margin: 0 0 6px 0;
+    color: var(--text);
+  }
+  .project-card p {
+    margin: 0;
+    font-size: 14px;
+    color: var(--muted);
+  }
+
+  /* Contact */
+  #contact { background: var(--black); }
+  .contact-cards {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr); /* Diubah jadi 2 kolom agar 4 kartu tersusun rapi (2x2) */
+    gap: 20px;
+  }
+  .contact-card-item {
+    background: rgba(255, 255, 255, 0.02);
+    border: 1px solid var(--line);
+    border-radius: 20px;
+    padding: 24px;
+    text-decoration: none;
+    color: var(--text);
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    transition: all 0.3s ease;
+  }
+  .contact-card-item:hover {
+    border-color: var(--navy-lighter);
+    transform: translateY(-4px);
+    background: rgba(65, 107, 135, 0.08);
+  }
+  .contact-card-item .icon {
+    width: 44px; height: 44px;
+    border-radius: 50%;
+    border: 1px solid var(--line);
+    display: flex; align-items: center; justify-content: center;
+    color: var(--navy-lighter);
+  }
+  .contact-card-item b {
+    font-family: 'Space Grotesk', sans-serif;
+    font-size: 17px;
+    display: block;
+  }
+  .contact-card-item span {
+    color: var(--muted);
+    font-size: 13.5px;
+    word-break: break-all;
+  }
+
+  @media (max-width: 900px) {
+    .card { padding: 28px 22px 36px; }
+    .hero { grid-template-columns: 1fr; }
+    .copy h1 { font-size: 38px; }
+    .photo-wrap { order: -1; margin-bottom: 12px; }
+    .photo-frame { width: 260px; height: 260px; }
+    nav { margin-bottom: 36px; }
+    .navlinks { gap: 18px; font-size: 13.5px; }
+    .contact-cards { grid-template-columns: 1fr; }
+  }
+
+  @media (max-width: 800px) {
+    .panel { padding: 48px 18px; }
+  }
+</style>
+</head>
+<body>
+
+<div class="stage">
+  <div class="card">
+    <nav>
+      <div class="logo">Profile<span>.</span></div>
+      <ul class="navlinks">
+        <li><a href="#" class="active">Home</a></li>
+        <li><a href="#about">About</a></li>
+        <li><a href="#contact">Contact</a></li>
+      </ul>
+    </nav>
+
+    <div class="hero">
+      <div class="copy">
+        <h1>Abdul Aziz Adha</h1>
+        <h2>Administrative Professional</h2>
+        <p>
+          Selamat datang di portofolio saya. Saya adalah seorang Administrative Professional yang menggabungkan ketelitian administrasi dengan pemanfaatan teknologi modern—seperti Python dan MySQL—serta manajemen data untuk memberikan hasil yang efisien.
+        </p>
+        <div class="actions">
+          <a href="#contact" class="cv-btn">Hubungi Saya</a>
+        </div>
+      </div>
+
+      <div class="photo-wrap">
+        <div class="photo-frame">
+          <img src="AbdulAzizAdha.jpg" alt="Foto profil Abdul Aziz Adha">
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<section class="panel" id="about">
+  <div class="panel-inner">
+    <div class="eyebrow">Kenalan Lebih Dekat</div>
+    <h3>Tentang Saya</h3>
+    <p class="lead">Berkomitmen untuk menyederhanakan proses kerja melalui otomatisasi data dan sistem administrasi yang cerdas.</p>
+
+    <div class="about-text">
+      <p>Saya memiliki ketertarikan mendalam pada pengelolaan data, perancangan alur kerja (workflow), serta pengelolaan infrastruktur sistem administratif yang efisien dan terstruktur dengan baik.</p>
+      <p>Selalu bersemangat dalam menghadapi tantangan operasional, mengoptimalkan proses kerja menggunakan teknologi, serta memberikan solusi digital yang fungsional untuk mendukung produktivitas.</p>
+
+      <!-- Keterampilan Utama -->
+      <div class="content-block">
+        <h4>Keterampilan Utama</h4>
+        <ul class="skills-list">
+          <li><strong>Administrasi & Operasional:</strong> Manajemen Dokumen, Pengelolaan Arsip, Penyusunan Laporan, dan Koordinasi Alur Kerja.</li>
+          <li><strong>Pengolahan Data:</strong> Microsoft Excel (Advanced), Pembersihan & Validasi Data.</li>
+          <li><strong>Teknologi Pendukung:</strong> Python (Otomatisasi Tugas), MySQL (Manajemen Database), & AI-Powered Workflow.</li>
+        </ul>
+      </div>
+
+      <!-- Proyek & Eksplorasi -->
+      <div class="content-block">
+        <h4>Proyek & Eksplorasi Mandiri</h4>
+        
+        <div class="project-card">
+          <h5>Otomatisasi Laporan Administratif (Python)</h5>
+          <p>Membuat *script* Python untuk memproses dan merapikan data mentah dari file Excel secara otomatis, sehingga memangkas waktu pengerjaan laporan rutin.</p>
+        </div>
+
+        <div class="project-card">
+          <h5>Sistem Manajemen Database Sederhana (MySQL)</h5>
+          <p>Merancang struktur database relasional untuk pencatatan inventaris kantor atau data entri agar pencarian informasi menjadi lebih cepat dan terstruktur.</p>
+        </div>
+
+        <div class="project-card">
+          <h5>Pengembangan Web Portofolio Pribadi</h5>
+          <p>Membangun situs web portofolio ini secara mandiri menggunakan HTML dan CSS untuk menunjukkan kemampuan teknis, kerapian, serta kreativitas profesional.</p>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<section class="panel" id="contact">
+  <div class="panel-inner">
+    <div class="eyebrow">Mari Terhubung</div>
+    <h3>Hubungi Saya</h3>
+    <p class="lead">Punya pertanyaan, tawaran kolaborasi, atau ingin berdiskusi? Silakan hubungi saya melalui tautan di bawah ini.</p>
+
+    <div class="contact-cards">
+      <!-- Email -->
+      <a href="mailto:abdulazizadha0@gmail.com" class="contact-card-item">
+        <div class="icon">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="M3 7l9 6 9-6"/></svg>
+        </div>
+        <div>
+          <b>Email</b>
+          <span>abdulazizadha0@gmail.com</span>
+        </div>
+      </a>
+
+      <!-- WhatsApp -->
+      <a href="https://wa.me/6289614406368" target="_blank" rel="noopener noreferrer" class="contact-card-item">
+        <div class="icon">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z"/></svg>
+        </div>
+        <div>
+          <b>WhatsApp</b>
+          <span>+62 896-1440-6368</span>
+        </div>
+      </a>
+
+      <!-- LinkedIn -->
+      <a href="https://linkedin.com/in/abdul-aziz-adha" target="_blank" rel="noopener noreferrer" class="contact-card-item">
+        <div class="icon">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"/><rect x="2" y="9" width="4" height="12"/><circle cx="4" cy="4" r="2"/></svg>
+        </div>
+        <div>
+          <b>LinkedIn</b>
+          <span>linkedin.com/in/abdul-aziz-adha</span>
+        </div>
+      </a>
+
+      <!-- Website / Domain -->
+      <a href="https://jijelstream.vercel.app" target="_blank" rel="noopener noreferrer" class="contact-card-item">
+        <div class="icon">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><circle cx="12" cy="12" r="10"/><line x1="2" y1="12" x2="22" y2="12"/><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/></svg>
+        </div>
+        <div>
+          <b>Website</b>
+          <span>jijelstream.vercel.app</span>
+        </div>
+      </a>
+    </div>
+  </div>
+</section>
+
+</body>
+</html>
